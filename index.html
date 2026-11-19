@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nova AI — Chat Assistant</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-glow glow-one"></div>
+  <div class="bg-glow glow-two"></div>
+
+  <main class="chat-app">
+    <header class="chat-header">
+      <div class="bot-profile">
+        <div class="avatar bot-avatar">✦</div>
+        <div class="profile-text">
+          <h1>Nova <span>AI</span></h1>
+          <p class="status"><span class="status-dot"></span><span id="statusText">Online</span></p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="themeToggle" class="icon-btn" title="Toggle theme" aria-label="Toggle theme">☾</button>
+        <button id="settingsBtn" class="icon-btn" title="Connect an API" aria-label="Connect an API">⚙</button>
+        <button id="clearBtn" class="icon-btn" title="Clear chat" aria-label="Clear chat">⌫</button>
+      </div>
+    </header>
+
+    <section class="messages" id="messages" aria-live="polite">
+      <div class="message bot-message">
+        <div class="avatar bot-avatar">✦</div>
+        <div class="message-content">
+          <!-- The interface intentionally does not reveal that replies are simulated by default. See the DEMO NOTE in script.js. -->
+          <div class="bubble">Hey! I'm Nova, your AI chat assistant. 👋<br />Ask me anything — ideas, code, jokes, or just a chat. What's on your mind?</div>
+          <span class="timestamp">just now</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="typing-indicator" id="typingIndicator" hidden>
+      <div class="avatar bot-avatar">✦</div>
+      <div class="typing-bubble"><span></span><span></span><span></span></div>
+    </div>
+
+    <div class="suggestions" id="suggestions">
+      <button class="chip" data-prompt="Hello Nova!">👋 Say hello</button>
+      <button class="chip" data-prompt="What can you do?">✨ What can you do?</button>
+      <button class="chip" data-prompt="Tell me a joke">😄 Tell me a joke</button>
+      <button class="chip" data-prompt="Help me plan a project">💡 Plan a project</button>
+    </div>
+
+    <form class="composer" id="chatForm">
+      <textarea id="userInput" rows="1" placeholder="Type your message…" aria-label="Message input"></textarea>
+      <button type="submit" id="sendBtn" class="send-btn" aria-label="Send message">➤</button>
+    </form>
+
+    <footer class="app-footer">Built for <strong>Ayomide Isiaka</strong> · Nova AI Assistant</footer>
+  </main>
+
+  <div class="modal-backdrop" id="settingsModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <h2 id="modalTitle">Connect an API</h2>
+      <p>Optional. Paste an OpenAI-compatible endpoint and key to personalize responses. Values stay in this browser session only.</p>
+      <label>Endpoint URL<input id="apiEndpoint" type="text" placeholder="https://api.openai.com/v1/chat/completions" /></label>
+      <label>API key<input id="apiKey" type="password" placeholder="sk-…" /></label>
+      <label>Model<input id="apiModel" type="text" value="gpt-3.5-turbo" /></label>
+      <div class="modal-actions">
+        <button id="saveApi" class="primary-btn">Save &amp; connect</button>
+        <button id="clearApi" class="ghost-btn">Disconnect</button>
+        <button id="closeModal" class="ghost-btn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
